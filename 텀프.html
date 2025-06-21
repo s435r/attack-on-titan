@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>진격의 거인 연대표</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('텀 프로젝트/배경화면.webp');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      color: #111;
+    }
+
+    header {
+      background-color: #2d2d2d;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    .top-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px 15px;
+      background-color: rgba(255, 255, 255, 0.85);
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .top-button:hover {
+      background-color: #ddd;
+    }
+
+    #timeline-wrapper {
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 30px;
+    }
+
+    .event-box {
+      display: inline-block;
+      vertical-align: top;
+      width: 200px;
+      height: 150px;
+      margin-right: 20px;
+      padding: 15px;
+      box-sizing: border-box;
+      position: relative;
+      cursor: pointer;
+      border-left: 6px solid #444;
+      border-radius: 8px;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      background-color: rgba(255,255,255,0.85);
+      overflow-wrap: break-word;
+      white-space: normal;
+    }
+
+    .event-box:hover {
+      transform: scale(1.05);
+    }
+
+    .event-box::before {
+      content: attr(data-year);
+      position: absolute;
+      top: -30px;
+      left: 0;
+      font-weight: bold;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .event-title {
+      font-weight: bold;
+      font-size: 15px;
+      color: #000;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+    }
+
+    .modal-content {
+      background-image: url('');
+      background-size: cover;
+      background-position: center;
+      margin: 5% auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 800px;
+      border-radius: 12px;
+      position: relative;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #fff;
+    }
+
+    .close {
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: red;
+    }
+
+    .modal-text-box {
+      background-color: rgba(255,255,255,0.95);
+      color: #000;
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+      word-break: keep-all;
+      white-space: pre-line;
+      z-index: 2;
+      position: relative;
+    }
+
+    .modal-text-box h2 {
+      margin-top: 0;
+    }
+
+    .modal-image, .modal-video {
+      width: 100%;
+      border-radius: 10px;
+      max-height: 300px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>진격의 거인 연도별 사건 정리</h1>
+    <button class="top-button" onclick="location.href='메인화면.html'">메인 화면으로</button>
+  </header>
+
+  <main>
+    <div id="timeline-wrapper">
+      <!-- 자바스크립트로 생성 -->
+    </div>
+  </main>
+
+  <div id="modal" class="modal">
+    <div id="modal-content" class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div class="modal-text-box">
+        <h2 id="modal-title"></h2>
+        <p id="modal-desc"></p>
+      </div>
+      <img id="modal-image" class="modal-image" src="" alt="이벤트 이미지">
+      <video id="modal-video" class="modal-video" controls autoplay muted loop style="display: none;">
+        <source id="modal-video-source" src="" type="video/mp4">
+        브라우저가 video 태그를 지원하지 않습니다.
+      </video>
+    </div>
+  </div>
+
+  <script>
+    const events = [
+      {
+        year: "B1 1003년",
+        title: "유미르의 거인화",
+        detail: "시조 유미르가 대지의 악마와 계약해 거인의 힘을 얻음. 엘디아 제국의 시작.",
+        bg: "텀 프로젝트/박스배경1.webp",
+        img: "텀 프로젝트/시조의 거인.webp"
+      },
+      {
+        year: "743년",
+        title: "거인 대전과 에르디아의 파라디 섬 이주 거인화",
+        detail: "거인 대전의 시작과 칼 프리츠의 파라디섬 이주가 시작됨",
+        bg: "텀 프로젝트/박스배경2.webp",
+        img: "텀 프로젝트/칼프리츠.webp"
+      },
+      {
+        year: "835",
+        title: "주요 인물 출생",
+        detail: "에렌, 미카사, 아르민 등 주요 인물 출생.",
+        bg: "텀 프로젝트/박스배경3.webp",
+        img: "텀 프로젝트/3인방.jpg"
+      },
+      {
+        year: "845",
+        title: "월 마리아 붕괴",
+        detail: "초대형 거인이 월 마리아를 파괴하고 거인들이 침입. 엘런의 어머니 카를라 사망.",
+        bg: "텀 프로젝트/박스배경4.webp",
+        img: "",
+        video: "텀 프로젝트/시간시나구.mp4"
+      },
+      {
+        year: "847",
+        title: "104기 훈련병단 입단",
+        detail: "엘런, 미카사, 아르민 등이 조사병단 훈련병으로 편입.",
+        bg: "텀 프로젝트/박스배경5.webp",
+        img: "텀 프로젝트/훈련병단.webp"
+      },
+      {
+        year: "850",
+        title: "850년 사건 모음",
+        detail: "850년도의 주요 사건을 보기 위해 별도 상세 페이지로 이동합니다.",
+        bg: "텀 프로젝트/박스배경6.webp",
+        img: "",
+        link: "850.html"
+      },
+      {
+        year: "854",
+        title: "854년 사건 모음",
+        detail: "854년도의 주요 사건을 보기 위해 별도 상세 페이지로 이동합니다.",
+        bg: "텀 프로젝트/박스배경7.webp",
+        img: "텀 프로젝트/상세7.webp",
+        link: "854.html"  // ✅ 추가
+      },
+      {
+        year: "857",
+        title: "땅울림이후",
+        detail: "땅울림으로 인해 진격의 거인 세계관 인류의 약 80% 정도가 절멸. 연합국 대사단의 결성",
+        bg: "텀 프로젝트/박스배경8.webp",
+        img: "텀 프로젝트/땅울림이후.png"
+      }
+    ];
+
+    const timeline = document.getElementById("timeline-wrapper");
+
+    events.forEach(event => {
+      const box = document.createElement("div");
+      box.className = "event-box";
+      box.setAttribute("data-year", event.year);
+      box.style.backgroundImage = `url('${event.bg}')`;
+
+      const titleDiv = document.createElement("div");
+      titleDiv.className = "event-title";
+      titleDiv.textContent = event.title;
+      box.appendChild(titleDiv);
+
+      box.addEventListener("click", () => {
+        if (event.link) {
+          window.location.href = event.link;
+        } else {
+          showModal(event.title, event.detail, event.bg, event.img, event.video || '');
+        }
+      });
+
+      timeline.appendChild(box);
+    });
+
+    function showModal(title, desc, bg, img, videoPath = '') {
+      document.getElementById("modal-title").textContent = title;
+      document.getElementById("modal-desc").textContent = desc;
+      document.getElementById("modal-content").style.backgroundImage = `url('${bg}')`;
+
+      const modalImg = document.getElementById("modal-image");
+      const modalVideo = document.getElementById("modal-video");
+      const videoSource = document.getElementById("modal-video-source");
+
+      if (img) {
+        modalImg.src = img;
+        modalImg.style.display = "block";
+      } else {
+        modalImg.style.display = "none";
+      }
+
+      if (videoPath) {
+        videoSource.src = videoPath;
+        modalVideo.load();
+        modalVideo.style.display = "block";
+      } else {
+        modalVideo.style.display = "none";
+        videoSource.src = "";
+      }
+
+      document.getElementById("modal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target === document.getElementById("modal")) {
+        closeModal();
+      }
+    };
+  </script>
+</body>
+</html>

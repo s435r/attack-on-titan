@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>850년 사건 상세</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('텀 프로젝트/배경화면.webp');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      color: #111;
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .event-box {
+      background-size: cover;
+      background-position: center;
+      border-left: 6px solid #444;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s;
+      color: #000;
+      backdrop-filter: brightness(1.1);
+    }
+
+    .event-box:hover {
+      transform: scale(1.02);
+    }
+
+    .event-title {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      background-image: url('');
+      background-size: cover;
+      background-position: center;
+      margin: 5% auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 800px;
+      border-radius: 12px;
+      position: relative;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #fff;
+    }
+
+    .close {
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: red;
+    }
+
+    .modal-text-box {
+      background-color: rgba(255,255,255,0.95);
+      color: #000;
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+      word-break: keep-all;
+      white-space: pre-line;
+      z-index: 2;
+      position: relative;
+    }
+
+    .modal-text-box h2 {
+      margin-top: 0;
+    }
+
+    .modal-image, .modal-video {
+      width: 100%;
+      border-radius: 10px;
+      max-height: 300px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div style="text-align: center; margin-top: 20px;">
+  <button onclick="goBack()" style="padding: 10px 20px; font-size: 16px; border-radius: 8px; border: none; background-color: #444; color: #fff; cursor: pointer;">
+    ⬅ 이전 화면으로
+  </button>
+</div>
+  <div class="content">
+    <h1>850년 사건 상세</h1>
+
+    <div class="event-box"
+         style="background-image: url('텀 프로젝트/이미지1.webp')"
+         onclick="showModal(
+           '104기 훈련병단 수료',
+           '104기 훈련병단이 모든 훈련 과정을 수료한 뒤 해산.',
+           '텀 프로젝트/박스배경1.webp',
+           '텀 프로젝트/훈련병단.webp')">
+      <div class="event-title">104기 훈련병단 수료</div>
+    </div>
+
+    <div class="event-box"
+         style="background-image: url('텀 프로젝트/이미지2.webp')"
+         onclick="showModal(
+           '트로스트 구 방어',
+           '트로스트 구에 초대형 거인이 재출현하고 문이 파괴된다. 파괴된 문을 통해 침입한 거인을 막기 위해 주둔병단과 104기 훈련병단이 투입된다. 엘런이 거인화하여 동료를 구하고, 파괴된 문을 막아 인류 최초의 승리를 거둔다.',
+           '텀 프로젝트/박스배경2.webp',
+           '텀 프로젝트/트로스트구.jpg')">
+      <div class="event-title">트로스트 구 방어</div>
+    </div>
+
+    <div class="event-box"
+         style="background-image: url('텀 프로젝트/이미지3.webp')"
+         onclick="showModal(
+           '여성형 거인 포획',
+           '스토헤스 구에서 벌어진 공방전 끝에 여성형 거인의 실체 포획에 성공한다.',
+           '텀 프로젝트/박스배경3.webp',
+           '텀 프로젝트/스토헤스구.webp')">
+      <div class="event-title">여성형 거인 포획</div>
+    </div>
+
+    <div class="event-box"
+         style="background-image: url('텀 프로젝트/유미르.webp')"
+         onclick="showModal(
+           '짐승 거인 첫 출현',
+           '월 로제 남부에 다수의 거인이 출현하며, 이른바 짐승 거인이 최초로 관측된다.',
+           '텀 프로젝트/박스배경4.webp',
+           '텀 프로젝트/짐승거인.webp')">
+      <div class="event-title">짐승 거인 첫 출현</div>
+    </div>
+
+    <div class="event-box"
+          style="background-image: url('텀 프로젝트/이미지5.webp')"
+          onclick="showModal(
+            '엘런 납치 및 탈환',
+            '월 로제 방벽 일각에서 갑옷 거인과 초대형 거인이 출현. 이 때 엘런이 전투력을 잃고 납치당하자, 동료들이 탈환 작전에 착수한다.',
+            '텀 프로젝트/박스배경5.webp',
+            '',
+            '텀 프로젝트/에렌 예거 탈환 작전.mp4')">
+      <div class="event-title">엘런 납치 및 탈환</div>
+    </div>
+
+    <div class="event-box"
+         style="background-image: url('텀 프로젝트/이미지6.webp')"
+         onclick="showModal(
+           '쿠데타와 왕정 붕괴',
+           '작클레 총통 휘하 병단이 일으킨 쿠데타로 프리츠 왕정이 무너지고, 히스토리아 레이스가 왕위에 오른다.',
+           '텀 프로젝트/박스배경6.webp',
+           '텀 프로젝트/쿠데타.webp')">
+      <div class="event-title">쿠데타와 왕정 붕괴</div>
+    </div>
+
+    <div class="event-box"
+         style="background-image: url('텀 프로젝트/이미지7.webp')"
+         onclick="showModal(
+           '월 마리아 탈환 작전',
+           '월 마리아 탈환을 위한 조사병단의 원정이 진행된다. 이 과정에서 엘빈 스미스가 전사하고, 아르민이 초대형 거인의 힘을 계승한다.',
+           '텀 프로젝트/박스배경7.webp',
+           '텀 프로젝트/월 마리아 최종 탈환 작전1.webp')">
+      <div class="event-title">월 마리아 탈환 작전</div>
+    </div>
+
+    <div class="event-box"
+         style="background-image: url('텀 프로젝트/이미지8.webp')"
+         onclick="showModal(
+           '세계의 진실 발견',
+           '지하실에서 그리샤 예거의 수기와 사진, 인류는 멸망하지 않았다는 문구가 발견되고, 벽 안 인류에게 세계의 진실이 공표된다.',
+           '텀 프로젝트/박스배경8.webp',
+           '텀 프로젝트/지하실.jpg')">
+      <div class="event-title">세계의 진실 발견</div>
+    </div>
+  </div>
+
+  <div id="modal" class="modal">
+    <div id="modal-content" class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div class="modal-text-box">
+        <h2 id="modal-title"></h2>
+        <p id="modal-desc"></p>
+      </div>
+      <img id="modal-image" class="modal-image" src="" alt="이벤트 이미지">
+      <video id="modal-video" class="modal-video" controls autoplay muted loop style="display: none;">
+        <source id="modal-video-source" src="" type="video/mp4">
+        브라우저가 video 태그를 지원하지 않습니다.
+      </video>
+    </div>
+  </div>
+
+  <script>
+    function showModal(title, desc, bg, img, videoPath = '') {
+      document.getElementById("modal-title").textContent = title;
+      document.getElementById("modal-desc").textContent = desc;
+      document.getElementById("modal-content").style.backgroundImage = `url('${bg}')`;
+
+      const modalImg = document.getElementById("modal-image");
+      const modalVideo = document.getElementById("modal-video");
+      const videoSource = document.getElementById("modal-video-source");
+
+      if (img) {
+        modalImg.src = img;
+        modalImg.style.display = "block";
+      } else {
+        modalImg.style.display = "none";
+      }
+
+      if (videoPath) {
+        videoSource.src = videoPath;
+        modalVideo.load();
+        modalVideo.style.display = "block";
+      } else {
+        modalVideo.style.display = "none";
+        videoSource.src = "";
+      }
+
+      document.getElementById("modal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target === document.getElementById("modal")) {
+        closeModal();
+      }
+    };
+    
+    function goBack() {
+      window.location.href = "텀프.html";
+    }
+
+  </script>
+</body>
+</html>

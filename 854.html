@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>854년 사건 상세</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('텀 프로젝트/배경화면.webp');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      color: #111;
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .event-box {
+      background-size: cover;
+      background-position: center;
+      border-left: 6px solid #444;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s;
+      color: #000;
+      backdrop-filter: brightness(1.1);
+    }
+
+    .event-box:hover {
+      transform: scale(1.02);
+    }
+
+    .event-title {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      background-image: url('');
+      background-size: cover;
+      background-position: center;
+      margin: 5% auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 800px;
+      border-radius: 12px;
+      position: relative;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #fff;
+    }
+
+    .close {
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: red;
+    }
+
+    .modal-text-box {
+      background-color: rgba(255,255,255,0.95);
+      color: #000;
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+      word-break: keep-all;
+      white-space: pre-line;
+      z-index: 2;
+      position: relative;
+    }
+
+    .modal-text-box h2 {
+      margin-top: 0;
+    }
+
+    .modal-image, .modal-video {
+      width: 100%;
+      border-radius: 10px;
+      max-height: 300px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div style="text-align: center; margin-top: 20px;">
+    <button onclick="goBack()" style="padding: 10px 20px; font-size: 16px; border-radius: 8px; border: none; background-color: #444; color: #fff; cursor: pointer;">
+      ⬅ 이전 화면으로
+    </button>
+  </div>
+
+  <div class="content">
+    <h1>854년 사건 상세</h1>
+
+    <div class="event-box"
+         style="background-image: url('텀 프로젝트/레벨리오.webp')"
+         onclick="showModal(
+           '레벨리오 전투 발발',
+           '빌리 타이버의 연설 도중, 거인으로 변한 엘런 예거가 빌리 타이버와 마레군 간부들을 습격함. 대부분의 주요 간부 사망. 라라 타이버가 전퇴의 거인으로 변신하여 진격의 거인과 전투. 조사병단이 마레군과 전투해 승리.',
+           '텀 프로젝트/박스배경7.webp',
+           '텀 프로젝트/레벨리오전투.mp4')">
+      <div class="event-title">레벨리오 전투 발발</div>
+    </div>
+
+    <div class="event-box"
+         style="background-image: url('텀 프로젝트/기습.webp')"
+         onclick="showModal(
+           '마레의 파라디 섬 기습',
+           '마레는 레벨리오 설욕 및 시조 탈환을 목표로 파라디 섬을 기습. 엘런은 모든 거인의 경질화를 해제하고 땅울림을 발동함.',
+           '텀 프로젝트/박스배경8.webp',
+           '텀 프로젝트/파라디섬 기습작전.mp4')">
+      <div class="event-title">마레의 파라디 섬 기습</div>
+    </div>
+
+    <div class="event-box"
+         style="background-image: url('텀 프로젝트/칼리파.webp')"
+         onclick="showModal(
+           '땅울림 발발',
+           '방벽 내부의 거인들과 세계연합군의 전투 개시. 연합 함대는 괴멸되고 도시도 함께 짓밟힘.',
+           '텀 프로젝트/배경.webp',
+           '텀 프로젝트/땅울림.webp')">
+      <div class="event-title">땅울림 발발</div>
+    </div>
+
+    <div class="event-box"
+         style="background-image: url('텀 프로젝트/천지전.webp')"
+         onclick="showModal(
+           '천지전',
+           '연합 세력이 엘런 예거와 전투 개시. 미카사가 엘런과 악마를 참수하며 땅울림 종료.',
+           '텀 프로젝트/박스배경.webp',
+           '텀 프로젝트/천지전.gif')">
+      <div class="event-title">천지전</div>
+    </div>
+
+    <div class="event-box"
+         style="background-image: url('텀 프로젝트/종결.webp')"
+         onclick="showModal(
+           '거인의 힘 소멸',
+           '모든 거인들이 인간으로 되돌아옴. 거인의 힘 소멸.',
+           '텀 프로젝트/박스배경8.webp',
+           '텀 프로젝트/천지전 이후.webp')">
+      <div class="event-title">거인의 힘 소멸</div>
+    </div>
+  </div>
+
+  <div id="modal" class="modal">
+    <div id="modal-content" class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div class="modal-text-box">
+        <h2 id="modal-title"></h2>
+        <p id="modal-desc"></p>
+      </div>
+      <img id="modal-image" class="modal-image" src="" alt="이벤트 이미지">
+      <video id="modal-video" class="modal-video" controls autoplay muted loop style="display: none;">
+        <source id="modal-video-source" src="" type="video/mp4">
+        브라우저가 video 태그를 지원하지 않습니다.
+      </video>
+    </div>
+  </div>
+
+  <script>
+    function showModal(title, desc, bg, media) {
+      document.getElementById("modal-title").textContent = title;
+      document.getElementById("modal-desc").textContent = desc;
+      document.getElementById("modal-content").style.backgroundImage = `url('${bg}')`;
+
+      const modalImg = document.getElementById("modal-image");
+      const modalVideo = document.getElementById("modal-video");
+      const videoSource = document.getElementById("modal-video-source");
+
+      if (media.endsWith('.mp4')) {
+        videoSource.src = media;
+        modalVideo.load();
+        modalVideo.style.display = "block";
+        modalImg.style.display = "none";
+      } else if (media) {
+        modalImg.src = media;
+        modalImg.style.display = "block";
+        modalVideo.style.display = "none";
+      } else {
+        modalImg.style.display = "none";
+        modalVideo.style.display = "none";
+      }
+
+      document.getElementById("modal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    function goBack() {
+      window.location.href = "텀프.html";
+    }
+
+    window.onclick = function(event) {
+      if (event.target === document.getElementById("modal")) {
+        closeModal();
+      }
+    };
+  </script>
+</body>
+</html>
